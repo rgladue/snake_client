@@ -17,7 +17,7 @@ const connect = function () {
   return conn;
 };
 
-const setupInput = function () {
+const setupInput = function (conn) {
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");

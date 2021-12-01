@@ -1,10 +1,15 @@
-const setupInput = function () {
+// const net = require("net");
+// const {connect} = require('./client');
+
+let connection;
+
+const setupInput = function (conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
-  stdin.on("data", handleUserInput);
-  const handleUserInput = function () {
+  const handleUserInput = function (key) {
     // your code here
     if (key === '\u0003') {
       process.exit();
@@ -22,8 +27,10 @@ const setupInput = function () {
       conn.write("Move: right");
     }
     
-    
   };
+  stdin.on("data", handleUserInput);
+    
+    
   return stdin;
 };
 
